@@ -10,13 +10,13 @@ if [[ `uname` == 'Darwin' ]]; then
   font_dir="$HOME/Library/Fonts"
 else
   # Linux
-  font_dir="$HOME/.local/share/fonts"
-  mkdir -p $font_dir
+  font_dir="/usr/local/share/fonts/powerline_fonts"
+  sudo mkdir -p $font_dir
 fi
 
 # Copy all fonts to user fonts directory
 echo "Copying fonts..."
-eval $find_command | xargs -0 -I % cp "%" "$font_dir/"
+eval $find_command | xargs -0 -I % sudo cp "%" "$font_dir/"
 
 # Reset font cache on Linux
 if command -v fc-cache @>/dev/null ; then
